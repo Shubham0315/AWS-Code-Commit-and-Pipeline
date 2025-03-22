@@ -110,3 +110,6 @@ AWS Code-Pipeline
   - So managing AWS services is not preferred
   - Also we can create jenkins on EC2 and configure auto scaling groups, AWS cloudwatch, alarms.
  
+** Why Jenkins in Popular than Code pipeline?
+- Faetures of Jenkins and can be integrated with lot of tools
+- Jenkins is not restricted to AWS platform only
