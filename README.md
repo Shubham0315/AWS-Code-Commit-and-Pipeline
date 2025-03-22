@@ -77,3 +77,36 @@ Practical
   - Restricted to only AWS
   - Even organizations using AWS host their repos on GitHub
   - Has less integrations with services outside AWS
+
+-------------------------------------------------------------------------------------------
+
+AWS Code-Pipeline
+-
+- Jenkins is an orchestrator which is open source tool
+- Suppose our code is on GitHub and needs to be deployed on K8S.
+  - User will commit code in GitHub. Devops engineer will create webhook that triggers jenkins pipeline(declarative/scripted)
+  - These pipelines are responsible for 2 actions :- Implement CI and to invoke C-Del (Jenkins is CI platform only but it can invoke CDel)
+  - In CI we've stages of pipeline such as checkout, build, test, code scan, image build, image push,etc
+  - Once image us built ande pushed, jenkins will invoke C-del process (Ansible, shell script, argo cd). GitOps is recommended here as we not only push artifacts on cluster but we can also manage them.
+  - Here Jenkins acts as orchestrator.
+ 
+- Workflow of Code Pipeline
+  - User makes commit/code change to AWS code commit
+  - AWS Code commit after change triggers AWS Code pipeline which invokes CI and CD both (In jenkins it was implement CI and invoke CD)
+  - It invokes CI using AWS Code build and implement all stages of CI like checkout, build, code scan, build, push, etc
+  - Then code deploy takes care of CD to deploy code on K8S clusters or EC2
+  - Thus AWS Code pipeline acts as orchestrator like jenkins
+ 
+- AWS Code commit doesnt offer as many features like GitHub or GitLab. So developers instead of using Code Commit use GitHUb/GitLab
+
+- If Code Commit/pipeline is chargeable and open source solutions like Jenkins are available, why people use AWS managed services?
+  - Jenkins is open source with master-slave architecture. If we use 2 worker nodes for 50 jenkins pipelines initially and then the number increases. Here we've to increase no of worker nodes and manage all of them by ourself. We need to do things like managing, scaling, security patching, health check, etc.
+  - There has to be one dedicated person to manage all those things
+  - AWS here started their managed service like code services and AWS will charge us according to usage. This is done by organizations as they dont want to manage persons.
+ 
+- Jenkins is preferred as it is Open source and for organizations management is not big problem.
+  - Some companies can run their Jenkins workload on 2 EC2 instances.
+  - When pipeline runs, we can setup like docker agent gets started and after completion it gets deleted so as to manage the infrastructure.
+  - So managing AWS services is not preferred
+  - Also we can create jenkins on EC2 and configure auto scaling groups, AWS cloudwatch, alarms.
+ 
