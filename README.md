@@ -36,3 +36,21 @@ AWS Code Commit
   - Also its reliable as its AWS solution we can reach out to them
  
 - In organization no one use free github repo
+
+
+Practical
+-
+- AWS Code commit doesnt work well with root user due to some access restrictions, SSH or HTTPS, so switch to IAM account
+- Go to code commit - Create repo- Provide name - Description(optional)
+  - No one can access the repos unless they're part of our organization as they're private. In GitHub we can make them public if required.
+
+![image](https://github.com/user-attachments/assets/f3c5dbaf-2220-4a91-8ec0-39bab6116c02)
+![image](https://github.com/user-attachments/assets/07e2c77e-6bac-4d5b-b587-1df409d631f9)
+
+- After creating repo, we can add/upload files from UI features like pull requests, commits, branches, etc using git commands
+  - But here uploading/editing files can be done one by one using UI
+  - To edit/upload multiple files as part of our code/terraform scripts, we need terminal
+  - Even to clone repo on terminal, we cannot use root account
+ 
+- To access AWS code repo from your laptop terminal we cannot use root account, ensure GIT is installed
+  - Login using IAM user and clone URL using HTTPS :- git clone $URL
