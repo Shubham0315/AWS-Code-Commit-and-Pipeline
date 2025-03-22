@@ -54,3 +54,26 @@ Practical
  
 - To access AWS code repo from your laptop terminal we cannot use root account, ensure GIT is installed
   - Login using IAM user and clone URL using HTTPS :- git clone $URL
+
+- Create IAM user now and attach policies directly - **AWSCodeCommitPowerUser** (to get all access of codeCommit)
+
+![image](https://github.com/user-attachments/assets/59f0fe51-ded6-40bb-a4d7-bfd34973cb31)
+![image](https://github.com/user-attachments/assets/c82a7c0b-8e32-47c7-9bff-e12342624378)
+
+  - Using this user we can HTTPs into code commit and upload files in terminal
+
+- Login through IAM user using incognito to access the repo created earlier (create it first we haven't)
+
+- To access the Code-Commit repo using local terminal, we need to install GIT on local
+
+- Command :- **git --version**
+
+- Clone the URL :- **git clone https://URL**
+
+- Once cloned we can create files - git add - git commit -m "message" - git push
+
+- Disadvantages of Code Commit
+  - Very less features than GitHub/GitLab
+  - Restricted to only AWS
+  - Even organizations using AWS host their repos on GitHub
+  - Has less integrations with services outside AWS
